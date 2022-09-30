@@ -1,0 +1,42 @@
+{% extends 'main.html' %}
+{% block title %}insurance{% endblock title %}
+
+{% block content %}
+			<main class="main-content">
+				<div class="breadcrumbs">
+					<div class="container">
+						<a href="{% url 'base:home' %}">Home</a>
+						<span>Insurance</span>
+					</div>
+				</div>
+
+				<div class="page">
+					<div class="container">
+						
+
+						<div class="row">
+							<div class="col-md-9">
+								<h2 class="section-title text-left">Your details go here</h2>
+								<form action="#" method= "POST" class="contact-form">
+									{% csrf_token %}
+
+									<div class="row">
+										{{form}}
+										
+									</div>
+
+									
+
+									<p class="text-right">
+										<input type="submit" value="Complete Insurance">
+									</p>
+								</form>
+
+
+							</div>
+						</div>
+					</div>
+				</div> <!-- .page -->
+			</main>
+{% endblock content %}
+			

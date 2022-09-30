@@ -1,0 +1,57 @@
+{% extends 'main.html' %}
+{% block title %}contacts{% endblock title %}
+
+{% block content %}
+			<main class="main-content">
+				<div class="breadcrumbs">
+					<div class="container">
+						<a href="{% url 'base:home' %}">Home</a>
+						<span>Contact</span>
+					</div>
+				</div>
+
+				<div class="page">
+					<div class="container">
+						<div class="map"></div>
+
+						<div class="row">
+							<div class="col-md-3">
+								<h2 class="section-title text-left">Address</h2>
+
+								<div class="contact-detail">
+									<address>
+										<p>Company Name INC. <br>
+											523 Burt Street, Omaha</p>
+
+										<p>Phone: +1 823 424 9134
+											info@company.com</p>
+									</address>
+								</div>
+							</div>
+							<div class="col-md-9">
+								<h2 class="section-title text-left">Contact form</h2>
+								<form action="#" method= "POST" class="contact-form">
+									{% csrf_token %}
+
+									<div class="row">
+										{{form}}
+										{% comment %} <div class="col-md-4"><input type="text" placeholder="Your name..."></div>
+										<div class="col-md-4"><input type="text" placeholder="Email..."></div>
+										<div class="col-md-4"><input type="text" placeholder="Website..."></div> {% endcomment %}
+									</div>
+
+									{% comment %} <textarea  placeholder="Message..."></textarea> {% endcomment %}
+
+									<p class="text-right">
+										<input type="submit" value="Send message">
+									</p>
+								</form>
+
+
+							</div>
+						</div>
+					</div>
+				</div> <!-- .page -->
+			</main>
+{% endblock content %}
+			

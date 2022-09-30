@@ -1,0 +1,5 @@
+businessShortCode= "174379"
+phone_number = "254740119411"
+lipa_na_mpesa_passkey = "G1ASL2kds54epLs6nPUqEu/2DzkfkQPT5W4fACdw+XVhYA18iY7aB1qIaAesYRfUwWhWYAFqOTJT4j/XGtl4phjU+g/vsu7HZlkJ1jApB4p3GWQP9uL5XxkDhKhoiZQs28l+dBSOoPKbr8+dpR2l9yu0RLtOT88W6WYdFkfWwla9AUhbEr8JUxodf2V/Gz3XfR9+laFLIlBlHZjy+sDrfqrUhyUf/APh34TBH7uvaPgE5T76ZjznLIAsu7fTB1tGRwVGEnIbHjAqE8TrWERWUkR3wMJJpUZic2cbVZuqJs0JQV0+oH58m3n7+dcfZvxuwJdPdxJ5jIBemB3lM8UEyg=="
+consumer_key = "RKtudL4wDwUOwwqf9uWPxaMPloAqlXoX"
+consumer_secret = "q6M5fLJ7Z59fzNo7"
