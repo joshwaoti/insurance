@@ -1,5 +1,6 @@
 from django.forms import ModelForm
-from .models import Contact, Insuranced
+from django.contrib.auth.forms import UserCreationForm
+from .models import Contact, Client, User
 
 class ContactForm(ModelForm):
     class Meta:
@@ -8,5 +9,15 @@ class ContactForm(ModelForm):
 
 class InsuranceForm(ModelForm):
     class Meta:
-        model = Insuranced
+        model = Client
         fields = '__all__'
+
+class MyUserCreationForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['name', 'username', 'email', 'password1', 'password2']
+
+class Userform(ModelForm):
+    class Meta:
+        model = User
+        fields = ['name', 'username', 'email']
