@@ -5,29 +5,34 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.core.mail import send_mail
-from .forms import ContactForm, InsuranceForm, MyUserCreationForm
+from django.db.models import Count
+from .forms import ContactForm, InsuranceForm, MyUserCreationForm, Userform
 from .models import User, Client
 
 
 def homePage(request):
     return render(request, 'base/home.html')
 
+
 @login_required(login_url='base:login')
 def dashboard(request, pk):
     user = User.objects.get(id=pk)
-    client = user.client_set.filter()
-    # client_count = client.Count()
+    agents = User.objects.annotate(client_count=Count('clients'))
+    # client_num = agents.client_count
     
 
     context = {
         'user' : user,
+        # 'client_num' : client_num
         
     }
     return render(request, 'base/dashboard.html', context)
 
+
 def loginPage(request):
+    user = request.user
     if request.user.is_authenticated:
-        return redirect('base:dashboard')
+        return redirect('base:dashboard', pk=user.id)
 
     if request.method == 'POST':
         username = request.POST.get('username').lower()
@@ -43,7 +48,7 @@ def loginPage(request):
 
         if user is not None:
             login(request, user)
-            return redirect('base:dashboard')
+            return redirect('base:dashboard', pk=user.id)
         else:
             messages.error(request, 'Incorrect Username or password')
     return render(request, 'base/pages-login.html')
@@ -79,15 +84,16 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect ('base:dashboard')
+            return redirect ('base:home')
     form = ContactForm()
     context = {
         'form': form,
     }
     return render(request, 'base/contact.html',context)
 
-
+@login_required(login_url='base:login')
 def insurance(request):
+    
     if request.method == 'POST':
         form = InsuranceForm(request.POST)
         if form.is_valid():
@@ -97,14 +103,44 @@ def insurance(request):
             email = form.cleaned_data['email']
             phone_number = form.cleaned_data['phone_number']
             phone_imei = form.cleaned_data['phone_imei']
+            # start_date = form.cleaned_data['start_date']
+            # end_date = form.cleaned_data['end_date']
             email_subject = 'phone insurance request'
-            email_message = first_name + ' ' + last_name + '\n' + email + '\n' + 'phone number: ' + phone_number + '\n' + 'imei number: ' + phone_imei
+            email_message = first_name + ' ' + last_name + '\n' + email + '\n' + 'phone number: ' + phone_number + '\n' + 'imei number: ' + phone_imei + '\n' 
+            # + 'start_date: ' + start_date + '\n' + 'end_date: ' + end_date
 
             send_mail(email_subject, email_message, settings.CONTACT_EMAIL, settings.ADMIN_EMAIL)
-            return redirect ('base:dashboard')
+            user = request.user
+            return redirect ('base:dashboard', pk=user.id)
 
     form = InsuranceForm()
     context = {
         'form': form,
     }
     return render(request, 'base/insurance.html', context)
+
+def userProfile(request, pk):
+    page = 'profile'
+    user = User.objects.get(id=pk)
+    context={
+        'user' : user,
+        'page' : page,
+    }
+
+    return render(request, 'base/users-profile.html', context)
+
+@login_required(login_url='base:login')
+def updateUser(request):
+    user = request.user
+    form = Userform(instance=user)
+
+    if request.method == "POST":
+        form = Userform(request.POST, request.FILES, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('base:profile', pk=user.id)
+
+    context = {
+        'form' : form,
+    }
+    return render(request, 'base/users-profile.html', context)

@@ -9,7 +9,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="{% url 'base:home' %}" class="logo d-flex align-items-center">
         <img src="{% static 'assets/img/logo.png' %}" alt="">
         <span class="d-none d-lg-block">Device Solutions Hub</span>
       </a>
@@ -89,7 +89,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'base:dashboard' user.id %}">
+        <a class="nav-link collapsed" href="{% url 'base:home' %}">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
@@ -268,7 +268,7 @@
       <li class="nav-heading">Pages</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="pages-faq.html">
+        <a class="nav-link collapsed" href="">
           <i class="bi bi-question-circle"></i>
           <span>F.A.Q</span>
         </a>

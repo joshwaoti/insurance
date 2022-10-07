@@ -10,5 +10,7 @@ urlpatterns = [
     path('insurance/', views.insurance, name='insurance'),
     path('login/', views.loginPage, name='login'),
     path('logout/', views.logoutUser, name='logout'),
-    path('register/', views.registerPage, name='register')
+    path('register/', views.registerPage, name='register'),
+    path('user-profile/<str:pk>/', views.userProfile, name='profile'),
+    path('update-user/', views.updateUser, name='profile-update'),
 ]

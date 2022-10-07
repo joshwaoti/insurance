@@ -15,9 +15,9 @@ class InsuranceForm(ModelForm):
 class MyUserCreationForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['name', 'username', 'email', 'password1', 'password2']
+        fields = ['avatar', 'name', 'username', 'email', 'phone', 'password1', 'password2']
 
 class Userform(ModelForm):
     class Meta:
         model = User
-        fields = ['name', 'username', 'email']
+        fields = ['avatar', 'name', 'username', 'email', 'phone']
