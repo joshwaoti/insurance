@@ -1,3 +1,6 @@
+import datetime
+import dateutil
+from dateutil import relativedelta
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -27,8 +30,22 @@ class Client(models.Model):
     email = models.EmailField()
     phone_imei = models.CharField(max_length=15, unique=True)
     phone_number = models.CharField(max_length=20)
-    # start_date = models.DateField()
+    start_date = models.DateTimeField(auto_now_add=True)
     # end_date = models.DateField()
 
     def __str__(self):
         return self.email
+    @property
+    def client_status(self):
+        status = None
+
+        created = self.start_date.timestamp()
+        period = dateutil.relativedelta.relativedelta(months=6).timestamp()
+        end_date = created + period
+
+        if end_date:
+            status = 'expired'
+        else:
+            status = 'ongoing'
+        print(created)
+        return status

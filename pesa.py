@@ -1,31 +1,31 @@
-import base64
-import requests
-import keys
-from datetime import datetime as dt
-from requests.auth import HTTPBasicAuth
+# import base64
+# import requests
+# import keys
+# from datetime import datetime as dt
+# from requests.auth import HTTPBasicAuth
 
 
-str_time = dt.now().strftime("%Y%m%d%H%M%S")
+# str_time = dt.now().strftime("%Y%m%d%H%M%S")
 
-data = keys.businessShortCode + keys.lipa_na_mpesa_passkey + str_time
-encoded = base64 = base64.b64encode(data.encode())
-decoded = encoded.decode('utf-8')
+# data = keys.businessShortCode + keys.lipa_na_mpesa_passkey + str_time
+# encoded = base64 = base64.b64encode(data.encode())
+# decoded = encoded.decode('utf-8')
 
-consumer_key = keys.consumer_key
-consumer_secret = keys.consumer_secret
-# api_url = {"https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"}
+# consumer_key = keys.consumer_key
+# consumer_secret = keys.consumer_secret
+# # api_url = {"https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials"}
 
-# r = requests.get(api_url, auth=HTTPBasicAuth(consumer_key, consumer_secret))
-# print(r.text)
+# # r = requests.get(api_url, auth=HTTPBasicAuth(consumer_key, consumer_secret))
+# # print(r.text)
 
-url = "https://sandbox.safaricom.co.ke/oauth/v1/generate"
-querystring = {"grant_type":"client_credentials"}
-payload = ""
-headers = {
-    "Authorization": "Basic SWZPREdqdkdYM0FjWkFTcTdSa1RWZ2FTSklNY001RGQ6WUp4ZVcxMTZaV0dGNFIzaA=="
-}
-response = requests.request("GET", url, data=payload, headers=headers, params=querystring)
-print(response.text)
+# url = "https://sandbox.safaricom.co.ke/oauth/v1/generate"
+# querystring = {"grant_type":"client_credentials"}
+# payload = ""
+# headers = {
+#     "Authorization": "Basic SWZPREdqdkdYM0FjWkFTcTdSa1RWZ2FTSklNY001RGQ6WUp4ZVcxMTZaV0dGNFIzaA=="
+# }
+# response = requests.request("GET", url, data=payload, headers=headers, params=querystring)
+# print(response.text)
 
 # def lipa_na_mpesa():
 
@@ -50,3 +50,16 @@ print(response.text)
 #     response = requests.post(api_url, json= request, headers=headers)
 
 #     print(response.text)
+
+import dateutil
+import datetime
+from dateutil import relativedelta
+
+created = datetime.date.today()
+
+period = dateutil.relativedelta.relativedelta(months=6)
+end_date = created + period
+
+print(created)
+print(end_date)
+

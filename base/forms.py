@@ -11,6 +11,7 @@ class InsuranceForm(ModelForm):
     class Meta:
         model = Client
         fields = '__all__'
+        exclude = ('start_date',)
 
 class MyUserCreationForm(UserCreationForm):
     class Meta:

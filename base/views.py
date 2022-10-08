@@ -1,8 +1,8 @@
-from multiprocessing import context
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.hashers import make_password
 from django.conf import settings
 from django.core.mail import send_mail
 from django.db.models import Count
@@ -17,13 +17,22 @@ def homePage(request):
 @login_required(login_url='base:login')
 def dashboard(request, pk):
     user = User.objects.get(id=pk)
-    agents = User.objects.annotate(client_count=Count('clients'))
+    client_number = user.clients.all()
+    no = client_number.count()
+    client = Client.objects.all()
+    client_count = client.count()
+    sales = client_count * 1000
+    mySales = no * 1000
+    # agents = User.objects.annotate(client_count=Count('clients'))
     # client_num = agents.client_count
     
 
     context = {
         'user' : user,
-        # 'client_num' : client_num
+        'client_count' : client_count,
+        'sales' : sales,
+        'no' : no,
+        'mySales' : mySales,
         
     }
     return render(request, 'base/dashboard.html', context)
@@ -48,6 +57,7 @@ def loginPage(request):
 
         if user is not None:
             login(request, user)
+            messages.info(request, f'You have logged in as {user.username}')
             return redirect('base:dashboard', pk=user.id)
         else:
             messages.error(request, 'Incorrect Username or password')
@@ -55,6 +65,7 @@ def loginPage(request):
 
 def logoutUser(request):
     logout(request)
+    messages.info(request, 'You have logged out successfuly!')
     return redirect('base:home')
 
 def registerPage(request):
@@ -67,6 +78,7 @@ def registerPage(request):
             user.username = user.username.lower()
             user.save()
             login(request, user)
+            messages.success(request, 'Account was created successfuly and you are now logged in')
             return redirect('base:dashboard', pk=user.id)
 
         else:
@@ -84,6 +96,7 @@ def contact(request):
         form = ContactForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.info(request, 'Your message was sent successfully')
             return redirect ('base:home')
     form = ContactForm()
     context = {
@@ -111,6 +124,7 @@ def insurance(request):
 
             send_mail(email_subject, email_message, settings.CONTACT_EMAIL, settings.ADMIN_EMAIL)
             user = request.user
+            messages.success(request, 'You successfully registered a client for insurance')
             return redirect ('base:dashboard', pk=user.id)
 
     form = InsuranceForm()
@@ -131,6 +145,7 @@ def userProfile(request, pk):
 
 @login_required(login_url='base:login')
 def updateUser(request):
+    page = 'update-user'
     user = request.user
     form = Userform(instance=user)
 
@@ -138,9 +153,28 @@ def updateUser(request):
         form = Userform(request.POST, request.FILES, instance=user)
         if form.is_valid():
             form.save()
+            messages.success(request, 'You successfully updated your profile')
             return redirect('base:profile', pk=user.id)
 
     context = {
         'form' : form,
+        'page' : page,
     }
     return render(request, 'base/users-profile.html', context)
+
+# @login_required(login_url='base:login')
+def changePassword(request):
+
+    if request.method == 'POST':
+        password1 = request.POST.get('password1')
+        password2 = request.POST.get('password2')
+
+        if password1 == password2:
+            new_password = make_password(password1)
+            request.user.password = new_password
+            request.user.save()
+            messages.success(request, "You successfully changed your password!")
+            user = request.user
+            return redirect('base:profile', pk=user.id)
+
+    return render(request, 'base/users-profile.html')
