@@ -28,8 +28,9 @@
                   </div>
 
                   {% for field in form %}
-                  <form class="row g-3 needs-validation" method="POST", action="" enctype="multipart/form-data>
+                  <form class="row g-3 needs-validation" method="POST", enctype="multipart/form-data>
                     {% csrf_token %}
+                    
                     <div class="col-12">
                       <label for="yourName" class="form-label">{{field.label}}</label>
                       {{field}}

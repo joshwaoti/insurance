@@ -6,6 +6,7 @@ from django.contrib.auth.hashers import make_password
 from django.conf import settings
 from django.core.mail import send_mail
 from django.db.models import Count
+from django.views.decorators.csrf import csrf_exempt
 from .forms import ContactForm, InsuranceForm, MyUserCreationForm, Userform
 from .models import User, Client
 
@@ -68,6 +69,7 @@ def logoutUser(request):
     messages.info(request, 'You have logged out successfuly!')
     return redirect('base:home')
 
+@csrf_exempt
 def registerPage(request):
     form = MyUserCreationForm()
 
