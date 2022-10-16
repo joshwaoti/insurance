@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "base",
     "pwa",
+    "crispy_forms",
 ]
 
 PWA_APP_NAME = 'TAYAz Refurb Tech'

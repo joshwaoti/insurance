@@ -1,5 +1,6 @@
 {% extends 'main.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block title %}contacts{% endblock title %}
 
 {% block content %}
@@ -26,7 +27,7 @@
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span> {% endcomment %}
-          </a><!-- End Profile Iamge Icon -->
+          {% comment %} </a><!-- End Profile Iamge Icon --> {% endcomment %}
 {% comment %} 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
@@ -317,7 +318,7 @@
 
 								<div class="contact-detail">
 									<address>
-										<p>Company Name INC. <br>
+										<p>TAYAz Refurb Tech <br>
 											523 Burt Street, Omaha</p>
 
 										<p>Phone: +1 823 424 9134
@@ -331,7 +332,7 @@
 									{% csrf_token %}
 
 									<div class="row">
-										{{form}}
+										{{form|crispy}}
 										{% comment %} <div class="col-md-4"><input type="text" placeholder="Your name..."></div>
 										<div class="col-md-4"><input type="text" placeholder="Email..."></div>
 										<div class="col-md-4"><input type="text" placeholder="Website..."></div> {% endcomment %}

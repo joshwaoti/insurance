@@ -1,5 +1,6 @@
 {% extends 'main.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 {% block title %}insurance{% endblock title %}
 
 {% block content %}
@@ -117,7 +118,7 @@
 									{% csrf_token %}
 
 									<div class="row">
-										{{form}}
+										{{form|crispy}}
 										
 									</div>
 
