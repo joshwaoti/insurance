@@ -1,16 +1,20 @@
 import datetime
 import dateutil
+import uuid
 from dateutil import relativedelta
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django_resized import ResizedImageField
 
 class User(AbstractUser):
     name = models.CharField(max_length=200, null=True)
     username = models.CharField(max_length=200, unique=True)
     email = models.EmailField(unique=True, null=True)
-    avatar = models.ImageField(null=True, default='avatar.svg')
+    # avatar = models.ImageField(null=True, default='avatar.svg')
+    avatar = ResizedImageField(size=[300, 300], default='avatar.svg')
     county = models.CharField(max_length=200, null=True)
     phone = models.CharField(max_length=13, null=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
 
     USERNAME_FIELD = 'username'
 
@@ -47,5 +51,5 @@ class Client(models.Model):
             status = 'expired'
         else:
             status = 'ongoing'
-        print(created)
+        
         return status
