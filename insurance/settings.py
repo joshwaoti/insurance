@@ -45,6 +45,8 @@ INSTALLED_APPS = [
     "base",
     "pwa",
     "crispy_forms",
+    "mpesa",
+    "rest_framework",
 ]
 
 PWA_APP_NAME = 'TAYAz Refurb Tech'

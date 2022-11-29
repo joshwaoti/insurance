@@ -4,10 +4,6 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open(staticCacheName).then(function(cache) {
       return cache.addAll([
-        // '/base_layout',
-        // 'static/assets/img/favicon.png',
-        // 'static/assets/img/apple-touch-icon.png',
-        // 'static/assets/img/news-4.jpg',
         '',
       ]);
     })
@@ -32,7 +28,7 @@ self.addEventListener('fetch', function(event) {
   var requestUrl = new URL(event.request.url);
     if (requestUrl.origin === location.origin) {
       if ((requestUrl.pathname === '/')) {
-        event.respondWith(caches.match('/base_layout'));
+        event.respondWith(caches.match('/'));
         return;
       }
     }
