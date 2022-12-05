@@ -126,12 +126,12 @@
         </a>
       </li><!-- End Profile Page Nav -->
 
-      <li class="nav-item">
+      {% comment %} <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'base:contact' %}">
           <i class="bi bi-envelope"></i>
           <span>Contact</span>
         </a>
-      </li><!-- End Contact Page Nav -->
+      </li><!-- End Contact Page Nav --> {% endcomment %}
 
       <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'base:logout' %}">
@@ -188,7 +188,7 @@
                       <i class="bi bi-cart"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>{{no}} Clients</h6>
+                      <h6>{{no}} Clients </h6>
                       <span class="text-success small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1"></span>
 
                     </div>
@@ -224,7 +224,6 @@
                     <div class="ps-3">
                       <h6>Kshs {{mySales}}</h6>
                       <span class="text-success small pt-1 fw-bold"></span> <span class="text-muted small pt-2 ps-1"></span>
-
                     </div>
                   </div>
                 </div>
@@ -303,6 +302,49 @@
               </div>
 
             </div><!-- End Customers Card -->
+
+            <section class="section">
+              <div class="row">
+                <div >
+                  {% comment %} my clients table section {% endcomment %}
+                  {% for client in client_number  %}                       
+                  <div>
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">My Clients</h5>
+          
+                        <!-- Default Table -->
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Last Name</th>
+                              <th scope="col">IMEI</th>
+                              <th scope="col">Client Status</th>
+                              <th scope="col">Start Date</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">{{client.id}}</th>
+                              <td>{{client.last_name}}</td>
+                              <td>{{client.phone_imei}}</td>
+                              <td>{{client.client_status}}</td>
+                              <td>{{client.start_date}}</td>
+                            </tr>
+                            
+                          </tbody>
+                        </table>
+                        <!-- End Default Table Example -->
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                  
+                </div>
+              </div>
+            </section>
+
 
       </div>
     </section>

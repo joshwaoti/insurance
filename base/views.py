@@ -24,6 +24,8 @@ def dashboard(request, pk):
     client_count = client.count()
     sales = client_count * 1000
     mySales = no * 1000
+    client_name = None
+    print(client_number)
     # agents = User.objects.annotate(client_count=Count('clients'))
     # client_num = agents.client_count
     
@@ -34,6 +36,7 @@ def dashboard(request, pk):
         'sales' : sales,
         'no' : no,
         'mySales' : mySales,
+        'client_number' : client_number,
         
     }
     return render(request, 'base/dashboard.html', context)
