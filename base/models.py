@@ -1,7 +1,6 @@
 import datetime
-import dateutil
 import uuid
-from dateutil import relativedelta
+from dateutil.relativedelta import relativedelta
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django_resized import ResizedImageField
@@ -41,15 +40,17 @@ class Client(models.Model):
         return self.email
     @property
     def client_status(self):
-        status = None
+        status = 'active'
 
-        created = self.start_date.timestamp()
-        period = dateutil.relativedelta.relativedelta(months=6).timestamp()
+        created = self.start_date
+        period = datetime.timedelta(30*6)
         end_date = created + period
 
-        if end_date:
-            status = 'expired'
+        days = created
+        if days < end_date:
+            days = created+ datetime.timedelta(days = 1)
+            # print(days)
         else:
-            status = 'ongoing'
+            status = 'expired'
         
         return status
