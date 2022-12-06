@@ -61,7 +61,7 @@ def loginPage(request):
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-            login(request, user)
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             messages.info(request, f'You have logged in as {user.username}')
             return redirect('base:dashboard', pk=user.id)
         else:
@@ -83,7 +83,7 @@ def registerPage(request):
             user = form.save(commit=False)
             user.username = user.username.lower()
             user.save()
-            login(request, user)
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             messages.success(request, 'Account was created successfuly and you are now logged in')
             return redirect('base:dashboard', pk=user.id)
 
@@ -168,8 +168,9 @@ def updateUser(request):
     }
     return render(request, 'base/users-profile.html', context)
 
-# @login_required(login_url='base:login')
+@login_required(login_url='base:login')
 def changePassword(request):
+    page = 'change-password'
 
     if request.method == 'POST':
         password1 = request.POST.get('password1')
@@ -183,4 +184,4 @@ def changePassword(request):
             user = request.user
             return redirect('base:profile', pk=user.id)
 
-    return render(request, 'base/users-profile.html')
+    return render(request, 'base/change_password.html', {'page' : page})
