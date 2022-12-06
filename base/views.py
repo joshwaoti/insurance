@@ -24,7 +24,9 @@ def dashboard(request, pk):
     client_count = client.count()
     sales = client_count * 1000
     mySales = no * 1000
-    client_name = None
+    client_insurance = Client.objects.filter(agent=user)
+    
+    # 
     # agents = User.objects.annotate(client_count=Count('clients'))
     # client_num = agents.client_count
     

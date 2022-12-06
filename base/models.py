@@ -54,3 +54,8 @@ class Client(models.Model):
             status = 'expired'
         
         return status
+
+    def remove_client(self):
+        if self.client_status == 'expired':
+            self.delete()
+        
