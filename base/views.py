@@ -11,6 +11,7 @@ from .forms import ContactForm, InsuranceForm, MyUserCreationForm, Userform
 from .models import User, Client
 
 
+
 def homePage(request):
     return render(request, 'base/home.html')
 

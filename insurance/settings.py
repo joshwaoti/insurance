@@ -182,6 +182,6 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-MPESA_CONSUMER_KEY = "your_consumer_key"
-MPESA_CONSUMER_SECRET = "your_consumer_secret"
+MPESA_CONSUMER_KEY = "5zYdsGDykC0e7qrFuCPKIzxgpZv7K8vr"
+MPESA_CONSUMER_SECRET = "LBWqLEuffrY5sIA1"
 MPESA_API_BASE = "https://sandbox.safaricom.co.ke"  # or "https://api.safaricom.co.ke"
