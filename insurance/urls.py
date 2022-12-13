@@ -24,7 +24,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("base.urls", namespace="base")),
     path("accounts/", include("allauth.urls")),
-    path('', include('django_pwa.urls')),
+    # path('', include('django_pwa.urls')),
+    # url(r'^manifest.json$', include('django_pwa.manifest_urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

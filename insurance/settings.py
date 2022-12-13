@@ -49,7 +49,9 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'django_pwa',
+    # 'django_pwa',
+    # 'pwa',
+    'mpesa',
 ]
 
 
@@ -179,3 +181,7 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+MPESA_CONSUMER_KEY = "your_consumer_key"
+MPESA_CONSUMER_SECRET = "your_consumer_secret"
+MPESA_API_BASE = "https://sandbox.safaricom.co.ke"  # or "https://api.safaricom.co.ke"
