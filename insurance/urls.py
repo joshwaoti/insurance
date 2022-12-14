@@ -26,7 +26,8 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     # path('', include('django_pwa.urls')),
     # url(r'^manifest.json$', include('django_pwa.manifest_urls')),
-    path('mpesa/', include('mpesa.urls')),
+    # path('mpesa/', include('mpesa.urls')),
+    path('daraja/', include('daraja.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

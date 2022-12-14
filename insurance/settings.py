@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     # 'django_pwa',
     # 'pwa',
     'mpesa',
+    'daraja'
 ]
 
 
