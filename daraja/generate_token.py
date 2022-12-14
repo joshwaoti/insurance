@@ -7,5 +7,7 @@ def generate_token():
     res = requests.get(settings.ACCESS_TOKEN_URL, auth=HTTPBasicAuth(settings.CONSUMER_KEY, settings.CONSUMER_SECRETE))   
     json_response = res.json()
     acess_token = json_response['access_token']
+    print(res.status_code)
+    print(res)
     
     return acess_token 

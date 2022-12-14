@@ -52,7 +52,8 @@ INSTALLED_APPS = [
     # 'django_pwa',
     # 'pwa',
     'mpesa',
-    'daraja'
+    'daraja',
+    'rest_framework',
 ]
 
 
@@ -183,6 +184,11 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-MPESA_CONSUMER_KEY = "5zYdsGDykC0e7qrFuCPKIzxgpZv7K8vr"
-MPESA_CONSUMER_SECRET = "LBWqLEuffrY5sIA1"
+CONSUMER_KEY = "RKtudL4wDwUOwwqf9uWPxaMPloAqlXoX"
+CONSUMER_SECRETE = "q6M5fLJ7Z59fzNo7"
 MPESA_API_BASE = "https://sandbox.safaricom.co.ke"  # or "https://api.safaricom.co.ke"
+API_RESOURCE_URL = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest'
+# API_RESOURCE_URL = 'https://sandbox.safaricom.co.ke/mpesa/stkpushquery/v1/query'
+ACCESS_TOKEN_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
+BUSNESS_SHORT_CODE = '174379'
+LIPANAMPESA_PASSKEY = "e/xqQfpONLEgm3iFFrVY4vB5YS6NIhS7ri8P4Pld3NCovzUx9cH5lCvEpa1m8eYRrDPArvmSTOn6rlLweve/VfaV7synCxzZtzcDE/K2uVnnkXkwUus/YNRKU4JAv2JfXu1l0fHvcKsanGyN2lMURhhYnmy1t2seFvU7W5RCwqbqsdfVt8acT0YQ0lfktpGDO1pUVtUf9WGqPxomziP0230WEf3v9H37HKpgnb/OWLeEVLUqye/qMFBzlbpzAI95ZFQoq5LwKE80Gvkyn8E6jGbGL5M/cPhHSBYkJzQSVCywga9F7WzLH7ag40DwJ21kVGVQkqrCxfAcfj4Ec9rGgw=="

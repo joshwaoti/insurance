@@ -1,0 +1,31 @@
+{% extends 'main.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Checkout{% endblock title %}
+
+{% block content %}
+
+
+<div class="row">
+    <div class="col-md-9">
+        <h2 class="section-title text-left">Clients' details go here</h2>
+        <form action="#" method= "POST" class="contact-form">
+            {% csrf_token %}
+
+            <div class="row">
+                
+                
+            </div>
+
+            
+            <div class="text-center">
+            <p class="text-right">
+                <a href="{% url 'daraja:initatestkpush' %}" >Checkout</a>
+                {% comment %} <input type="submit" class="btn btn-primary" value="Checkout"> {% endcomment %}
+                
+            </p>
+            </div>
+        </form>
+
+
+{% endblock content %}

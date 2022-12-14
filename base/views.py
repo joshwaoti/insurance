@@ -9,6 +9,7 @@ from django.db.models import Count
 from django.views.decorators.csrf import csrf_exempt
 from .forms import ContactForm, InsuranceForm, MyUserCreationForm, Userform
 from .models import User, Client
+from daraja.views import InitateSTKPush
 
 
 
@@ -186,3 +187,8 @@ def changePassword(request):
             return redirect('base:profile', pk=user.id)
 
     return render(request, 'base/change_password.html', {'page' : page})
+
+
+def checkout(request):
+    # pay = InitateSTKPush.initiate_mpesa_stk()
+    return render(request, 'base/checkout.html')
