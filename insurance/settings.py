@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'mpesa',
     'daraja',
     'rest_framework',
+    'django_daraja',
 ]
 
 
@@ -184,8 +185,8 @@ SOCIALACCOUNT_PROVIDERS = {
     }
 }
 
-CONSUMER_KEY = "RKtudL4wDwUOwwqf9uWPxaMPloAqlXoX"
-CONSUMER_SECRETE = "q6M5fLJ7Z59fzNo7"
+CONSUMER_KEY = "5zYdsGDykC0e7qrFuCPKIzxgpZv7K8vr"
+CONSUMER_SECRETE = "LBWqLEuffrY5sIA1"
 MPESA_API_BASE = "https://sandbox.safaricom.co.ke"  # or "https://api.safaricom.co.ke"
 API_RESOURCE_URL = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest'
 # API_RESOURCE_URL = 'https://sandbox.safaricom.co.ke/mpesa/stkpushquery/v1/query'

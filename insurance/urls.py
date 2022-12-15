@@ -25,8 +25,9 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("base.urls", namespace="base")),
     path("accounts/", include("allauth.urls")),
-    path('mpesa/', include(mpesa_urls)),
+    # path('mpesa/', include(mpesa_urls)),
     path('daraja/', include('daraja.urls')),
+    # path('daraja/', include('django_daraja.urls')),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
