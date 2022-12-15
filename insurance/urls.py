@@ -18,15 +18,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include, re_path
 from django.urls import re_path as url
+from mpesa.urls import mpesa_urls
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("base.urls", namespace="base")),
     path("accounts/", include("allauth.urls")),
-    # path('', include('django_pwa.urls')),
-    # url(r'^manifest.json$', include('django_pwa.manifest_urls')),
-    # path('mpesa/', include('mpesa.urls')),
+    path('mpesa/', include(mpesa_urls)),
     path('daraja/', include('daraja.urls')),
 ]
 

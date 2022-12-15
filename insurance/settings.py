@@ -191,4 +191,17 @@ API_RESOURCE_URL = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequ
 # API_RESOURCE_URL = 'https://sandbox.safaricom.co.ke/mpesa/stkpushquery/v1/query'
 ACCESS_TOKEN_URL = 'https://sandbox.safaricom.co.ke/oauth/v1/generate?grant_type=client_credentials'
 BUSNESS_SHORT_CODE = '174379'
-LIPANAMPESA_PASSKEY = "e/xqQfpONLEgm3iFFrVY4vB5YS6NIhS7ri8P4Pld3NCovzUx9cH5lCvEpa1m8eYRrDPArvmSTOn6rlLweve/VfaV7synCxzZtzcDE/K2uVnnkXkwUus/YNRKU4JAv2JfXu1l0fHvcKsanGyN2lMURhhYnmy1t2seFvU7W5RCwqbqsdfVt8acT0YQ0lfktpGDO1pUVtUf9WGqPxomziP0230WEf3v9H37HKpgnb/OWLeEVLUqye/qMFBzlbpzAI95ZFQoq5LwKE80Gvkyn8E6jGbGL5M/cPhHSBYkJzQSVCywga9F7WzLH7ag40DwJ21kVGVQkqrCxfAcfj4Ec9rGgw=="
+LIPANAMPESA_PASSKEY = "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919"
+
+MPESA_CONFIG = {
+    'CONSUMER_KEY': '5zYdsGDykC0e7qrFuCPKIzxgpZv7K8vr',
+    'CONSUMER_SECRET': 'LBWqLEuffrY5sIA1',
+    'CERTIFICATE_FILE': None,
+    'HOST_NAME': 'https://127.0.0.1:8000',
+    'PASS_KEY': 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919',
+    'SAFARICOM_API': 'https://sandbox.safaricom.co.ke',
+    'AUTH_URL': '/oauth/v1/generate?grant_type=client_credentials',
+    'SHORT_CODE': '174379',
+    'TILL_NUMBER': None,
+    'TRANSACTION_TYPE': 'CustomerBuyGoodsOnline',
+}

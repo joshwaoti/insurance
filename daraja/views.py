@@ -3,7 +3,7 @@ import requests
 
 # from rest_framework.views import APIView
 from rest_framework.generics import GenericAPIView
-
+from rest_framework import generics
 from rest_framework.response import Response
 from django.http import HttpResponse, JsonResponse
 from django.conf import settings
@@ -16,7 +16,7 @@ from .generate_token import generate_token
 from .serializer import MakePaymentSerializer
 
 
-class InitateSTKPush(GenericAPIView):
+class InitateSTKPush(generics.GenericAPIView):
     serializer_class = MakePaymentSerializer
 
     def post(self, request, *args, **kwargs):
