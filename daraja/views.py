@@ -1,11 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import requests
 
 # from rest_framework.views import APIView
 from rest_framework.generics import GenericAPIView
 from rest_framework import generics
 from rest_framework.response import Response
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse,HttpResponseRedirect
 from django.conf import settings
 import json
 # from django.views.decorators.csrf import csrf_exempt
@@ -30,7 +30,9 @@ class InitateSTKPush(generics.GenericAPIView):
         paymentResponse = self.initiate_mpesa_stk(
             amount=amount, phone=phone)
 
-        return Response(paymentResponse)
+        user = request.user
+
+        return HttpResponseRedirect(redirect_to="http://127.0.0.1:8000/")
 
     def initiate_mpesa_stk(self, amount: str, phone: str) -> dict:
         access_token = generate_token()
@@ -82,4 +84,6 @@ class InitateSTKPush(generics.GenericAPIView):
 
 
             return data
+
+        
 

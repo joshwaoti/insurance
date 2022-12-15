@@ -51,10 +51,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     # 'django_pwa',
     # 'pwa',
-    'mpesa',
+    # 'mpesa',
     'daraja',
     'rest_framework',
-    'django_daraja',
+    # 'django_daraja',
 ]
 
 
