@@ -307,7 +307,7 @@
               <div class="row">
                 <div >
                   {% comment %} my clients table section {% endcomment %}
-                  {% for client in client_number  %}                       
+                                         
                   <div>
                     <div class="card">
                       <div class="card-body">
@@ -325,6 +325,7 @@
                             </tr>
                           </thead>
                           <tbody>
+                            {% for client in client_number  %}
                             <tr>
                               <th scope="row">{{client.id}}</th>
                               <td>{{client.last_name}}</td>
@@ -332,6 +333,7 @@
                               <td>{{client.client_status}}</td>
                               <td>{{client.start_date}}</td>
                             </tr>
+                            {% endfor %}
                             
                           </tbody>
                         </table>
@@ -339,7 +341,7 @@
                       </div>
                     </div>
                   </div>
-                  {% endfor %}
+                  
                   
                 </div>
               </div>
