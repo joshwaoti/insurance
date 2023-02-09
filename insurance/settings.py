@@ -31,6 +31,7 @@ SECRET_KEY = "django-insecure-eq8*iyr_-tv%jnrc0=niol3wag_dk0bdp(!8_(+hwa8o+e_c&!
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://joshwaoti-ubiquitous-space-fortnight-wxwrqxwv6xp39555-8000.preview.app.github.dev', 'https://*127.0.0.1']
 
 
 # Application definition
